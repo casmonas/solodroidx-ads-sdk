@@ -86,6 +86,7 @@ public class SecondActivity extends AppCompatActivity {
                 .setAppLovinBannerId(Constant.APPLOVIN_BANNER_ID)
                 .setAppLovinBannerZoneId(Constant.APPLOVIN_BANNER_ZONE_ID)
                 .setIronSourceBannerId(Constant.IRONSOURCE_BANNER_ID)
+                .setWortiseBannerId(Constant.WORTISE_BANNER_ID)
                 .setDarkTheme(false)
                 .build();
     }

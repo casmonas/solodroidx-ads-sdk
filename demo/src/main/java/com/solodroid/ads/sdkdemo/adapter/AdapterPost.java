@@ -8,6 +8,7 @@ import static com.solodroid.ads.sdk.util.Constant.FACEBOOK;
 import static com.solodroid.ads.sdk.util.Constant.FAN;
 import static com.solodroid.ads.sdk.util.Constant.GOOGLE_AD_MANAGER;
 import static com.solodroid.ads.sdk.util.Constant.STARTAPP;
+import static com.solodroid.ads.sdk.util.Constant.WORTISE;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -138,6 +139,7 @@ public class AdapterPost extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     Constant.FAN_NATIVE_ID,
                     Constant.APPLOVIN_NATIVE_MANUAL_ID,
                     Constant.APPLOVIN_BANNER_MREC_ZONE_ID,
+                    Constant.WORTISE_NATIVE_ID,
                     sharedPref.getIsDarkTheme(),
                     false,
                     Constant.NATIVE_STYLE,
@@ -178,6 +180,7 @@ public class AdapterPost extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             case APPLOVIN_MAX:
             case APPLOVIN_DISCOVERY:
             case STARTAPP:
+            case WORTISE:
                 int maxNumberNativeAd;
                 if (totalPosts >= Constant.NATIVE_AD_INTERVAL) {
                     maxNumberNativeAd = (totalPosts / Constant.NATIVE_AD_INTERVAL);

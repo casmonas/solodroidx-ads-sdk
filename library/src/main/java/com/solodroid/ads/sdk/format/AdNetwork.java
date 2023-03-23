@@ -16,6 +16,7 @@ import static com.solodroid.ads.sdk.util.Constant.MOPUB;
 import static com.solodroid.ads.sdk.util.Constant.NONE;
 import static com.solodroid.ads.sdk.util.Constant.STARTAPP;
 import static com.solodroid.ads.sdk.util.Constant.UNITY;
+import static com.solodroid.ads.sdk.util.Constant.WORTISE;
 
 import android.app.Activity;
 import android.util.Log;
@@ -32,8 +33,13 @@ import com.unity3d.mediation.IInitializationListener;
 import com.unity3d.mediation.InitializationConfiguration;
 import com.unity3d.mediation.UnityMediation;
 import com.unity3d.mediation.errors.SdkInitializationError;
+import com.wortise.ads.WortiseSdk;
+import com.wortise.ads.consent.ConsentManager;
 
 import java.util.Map;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
 
 public class AdNetwork {
 
@@ -50,6 +56,7 @@ public class AdNetwork {
         private String appLovinSdkKey = "";
         private String mopubBannerId = "";
         private String ironSourceAppKey = "";
+        private String wortiseAppId = "";
         private boolean debug = true;
 
         public Initialize(Activity activity) {
@@ -104,6 +111,11 @@ public class AdNetwork {
 
         public Initialize setIronSourceAppKey(String ironSourceAppKey) {
             this.ironSourceAppKey = ironSourceAppKey;
+            return this;
+        }
+
+        public Initialize setWortiseAppId(String wortiseAppId) {
+            this.wortiseAppId = wortiseAppId;
             return this;
         }
 
@@ -177,6 +189,10 @@ public class AdNetwork {
                         IronSource.setUserId(advertisingId);
                         IronSource.init(activity, ironSourceAppKey);
                         break;
+
+                    case WORTISE:
+                        WortiseSdk.initialize(activity, wortiseAppId);
+                    break;
                 }
                 Log.d(TAG, "[" + adNetwork + "] is selected as Primary Ads");
             }
@@ -243,6 +259,10 @@ public class AdNetwork {
                         String advertisingId = IronSource.getAdvertiserId(activity);
                         IronSource.setUserId(advertisingId);
                         IronSource.init(activity, ironSourceAppKey);
+                        break;
+
+                    case WORTISE:
+                        WortiseSdk.initialize(activity, wortiseAppId);
                         break;
 
                     case NONE:

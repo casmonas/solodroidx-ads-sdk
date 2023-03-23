@@ -28,7 +28,7 @@ public class GDPR {
                 },
                 formError -> {
                 });
-        Log.d("GDPR", "GDPR Funding choices is selected");
+        Log.d("GDPR", "AdMob GDPR is selected");
     }
 
     public void loadForm(Activity activity) {

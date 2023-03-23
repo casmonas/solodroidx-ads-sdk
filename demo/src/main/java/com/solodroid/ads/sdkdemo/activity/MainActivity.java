@@ -8,6 +8,7 @@ import static com.solodroid.ads.sdk.util.Constant.GOOGLE_AD_MANAGER;
 import static com.solodroid.ads.sdk.util.Constant.IRONSOURCE;
 import static com.solodroid.ads.sdk.util.Constant.STARTAPP;
 import static com.solodroid.ads.sdk.util.Constant.UNITY;
+import static com.solodroid.ads.sdk.util.Constant.WORTISE;
 import static com.solodroid.ads.sdkdemo.data.Constant.STYLE_DEFAULT;
 import static com.solodroid.ads.sdkdemo.data.Constant.STYLE_NEWS;
 import static com.solodroid.ads.sdkdemo.data.Constant.STYLE_RADIO;
@@ -115,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 .setUnityGameId(Constant.UNITY_GAME_ID)
                 .setAppLovinSdkKey(getResources().getString(R.string.applovin_sdk_key))
                 .setIronSourceAppKey(Constant.IRONSOURCE_APP_KEY)
+                .setWortiseAppId(Constant.WORTISE_APP_ID)
                 .setDebug(BuildConfig.DEBUG)
                 .build();
     }
@@ -128,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
                     .setAdMobAppOpenId(Constant.ADMOB_APP_OPEN_AD_ID)
                     .setAdManagerAppOpenId(Constant.GOOGLE_AD_MANAGER_APP_OPEN_AD_ID)
                     .setApplovinAppOpenId(Constant.APPLOVIN_APP_OPEN_AP_ID)
+                    .setWortiseAppOpenId(Constant.WORTISE_APP_OPEN_AD_ID)
                     .build();
         }
     }
@@ -158,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
                 .setAppLovinBannerId(Constant.APPLOVIN_BANNER_ID)
                 .setAppLovinBannerZoneId(Constant.APPLOVIN_BANNER_ZONE_ID)
                 .setIronSourceBannerId(Constant.IRONSOURCE_BANNER_ID)
+                .setWortiseBannerId(Constant.WORTISE_BANNER_ID)
                 .setDarkTheme(sharedPref.getIsDarkTheme())
                 .build();
     }
@@ -190,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
                 .setAppLovinInterstitialId(Constant.APPLOVIN_INTERSTITIAL_ID)
                 .setAppLovinInterstitialZoneId(Constant.APPLOVIN_INTERSTITIAL_ZONE_ID)
                 .setIronSourceInterstitialId(Constant.IRONSOURCE_INTERSTITIAL_ID)
+                .setWortiseInterstitialId(Constant.WORTISE_INTERSTITIAL_ID)
                 .setInterval(Constant.INTERSTITIAL_AD_INTERVAL)
                 .build();
     }
@@ -208,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
                 .setFanNativeId(Constant.FAN_NATIVE_ID)
                 .setAppLovinNativeId(Constant.APPLOVIN_NATIVE_MANUAL_ID)
                 .setAppLovinDiscoveryMrecZoneId(Constant.APPLOVIN_BANNER_MREC_ZONE_ID)
+                .setWortiseNativeId(Constant.WORTISE_NATIVE_ID)
                 .setNativeAdStyle(Constant.NATIVE_STYLE)
                 .setNativeAdBackgroundColor(R.color.colorNativeBackgroundLight, R.color.colorNativeBackgroundDark)
                 .setPadding(0, 0, 0, 0)
@@ -225,6 +231,7 @@ public class MainActivity extends AppCompatActivity {
                 .setFanNativeId(Constant.FAN_NATIVE_ID)
                 .setAppLovinNativeId(Constant.APPLOVIN_NATIVE_MANUAL_ID)
                 .setAppLovinDiscoveryMrecZoneId(Constant.APPLOVIN_BANNER_MREC_ZONE_ID)
+                .setWortiseNativeId(Constant.WORTISE_NATIVE_ID)
                 .setNativeAdStyle(Constant.NATIVE_STYLE)
                 .setNativeAdBackgroundColor(R.color.colorNativeBackgroundLight, R.color.colorNativeBackgroundDark)
                 .setDarkTheme(sharedPref.getIsDarkTheme())
@@ -269,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showAdChooser() {
-        final String[] ads = {"AdMob", "Google Ad Manager", "Start.io", "AppLovin MAX", "AppLovin Discovery", "Unity Ads", "ironSource", "FAN (Waterfall)"};
+        final String[] ads = {"AdMob", "Google Ad Manager", "Start.io", "AppLovin MAX", "AppLovin Discovery", "Unity Ads", "ironSource", "FAN (Waterfall)", "Wortise"};
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Select Ad");
         builder.setItems(ads, (dialog, which) -> {
@@ -298,6 +305,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case "FAN (Waterfall)":
                     Constant.AD_NETWORK = FAN;
+                    break;
+                case "Wortise":
+                    Constant.AD_NETWORK = WORTISE;
                     break;
                 default:
                     Constant.AD_NETWORK = ADMOB;

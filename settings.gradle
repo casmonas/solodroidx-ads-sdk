@@ -19,6 +19,9 @@ dependencyResolutionManagement {
         maven {
             url 'https://unity3ddist.jfrog.io/artifactory/unity-mediation-mvn-prod-local/'
         }
+        maven {
+            url 'https://maven.wortise.com/artifactory/public'
+        }
     }
 }
 rootProject.name = "SolodroidxAdsSdk"

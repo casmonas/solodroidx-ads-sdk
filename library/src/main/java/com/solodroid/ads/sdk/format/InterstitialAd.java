@@ -16,6 +16,7 @@ import static com.solodroid.ads.sdk.util.Constant.MOPUB;
 import static com.solodroid.ads.sdk.util.Constant.NONE;
 import static com.solodroid.ads.sdk.util.Constant.STARTAPP;
 import static com.solodroid.ads.sdk.util.Constant.UNITY;
+import static com.solodroid.ads.sdk.util.Constant.WORTISE;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -72,6 +73,7 @@ public class InterstitialAd {
         private MaxInterstitialAd maxInterstitialAd;
         public AppLovinInterstitialAdDialog appLovinInterstitialAdDialog;
         public AppLovinAd appLovinAd;
+        public com.wortise.ads.interstitial.InterstitialAd wortiseInterstitialAd;
         private int retryAttempt;
         private int counter = 1;
 
@@ -86,6 +88,7 @@ public class InterstitialAd {
         private String appLovinInterstitialZoneId = "";
         private String mopubInterstitialId = "";
         private String ironSourceInterstitialId = "";
+        private String wortiseInterstitialId = "";
         private int placementStatus = 1;
         private int interval = 3;
 
@@ -156,6 +159,11 @@ public class InterstitialAd {
 
         public Builder setIronSourceInterstitialId(String ironSourceInterstitialId) {
             this.ironSourceInterstitialId = ironSourceInterstitialId;
+            return this;
+        }
+
+        public Builder setWortiseInterstitialId(String wortiseInterstitialId) {
+            this.wortiseInterstitialId = wortiseInterstitialId;
             return this;
         }
 
@@ -443,6 +451,39 @@ public class InterstitialAd {
                         });
                         IronSource.loadInterstitial();
                         break;
+
+                    case WORTISE:
+                        wortiseInterstitialAd = new com.wortise.ads.interstitial.InterstitialAd(activity, wortiseInterstitialId);
+                        wortiseInterstitialAd.setListener(new com.wortise.ads.interstitial.InterstitialAd.Listener() {
+                            @Override
+                            public void onInterstitialClicked(@NonNull com.wortise.ads.interstitial.InterstitialAd interstitialAd) {
+
+                            }
+
+                            @Override
+                            public void onInterstitialDismissed(@NonNull com.wortise.ads.interstitial.InterstitialAd interstitialAd) {
+                                loadInterstitialAd();
+                                Log.d(TAG, "[Wortise] Interstitial Ad dismissed");
+                            }
+
+                            @Override
+                            public void onInterstitialFailed(@NonNull com.wortise.ads.interstitial.InterstitialAd interstitialAd, @NonNull com.wortise.ads.AdError adError) {
+                                loadBackupInterstitialAd();
+                                Log.d(TAG, "[Wortise] Failed to load Interstitial Ad");
+                            }
+
+                            @Override
+                            public void onInterstitialLoaded(@NonNull com.wortise.ads.interstitial.InterstitialAd interstitialAd) {
+                                Log.d(TAG, "[Wortise] Interstitial Ad loaded");
+                            }
+
+                            @Override
+                            public void onInterstitialShown(@NonNull com.wortise.ads.interstitial.InterstitialAd interstitialAd) {
+
+                            }
+                        });
+                        wortiseInterstitialAd.loadAd();
+                        break;
                 }
             }
         }
@@ -710,6 +751,38 @@ public class InterstitialAd {
                         IronSource.loadInterstitial();
                         break;
 
+                    case WORTISE:
+                        wortiseInterstitialAd = new com.wortise.ads.interstitial.InterstitialAd(activity, wortiseInterstitialId);
+                        wortiseInterstitialAd.setListener(new com.wortise.ads.interstitial.InterstitialAd.Listener() {
+                            @Override
+                            public void onInterstitialClicked(@NonNull com.wortise.ads.interstitial.InterstitialAd interstitialAd) {
+
+                            }
+
+                            @Override
+                            public void onInterstitialDismissed(@NonNull com.wortise.ads.interstitial.InterstitialAd interstitialAd) {
+                                loadInterstitialAd();
+                                Log.d(TAG, "[Wortise] [Backup] Interstitial Ad dismissed");
+                            }
+
+                            @Override
+                            public void onInterstitialFailed(@NonNull com.wortise.ads.interstitial.InterstitialAd interstitialAd, @NonNull com.wortise.ads.AdError adError) {
+                                Log.d(TAG, "[Wortise] [Backup] Failed to load Interstitial Ad");
+                            }
+
+                            @Override
+                            public void onInterstitialLoaded(@NonNull com.wortise.ads.interstitial.InterstitialAd interstitialAd) {
+                                Log.d(TAG, "[Wortise] [Backup] Interstitial Ad loaded");
+                            }
+
+                            @Override
+                            public void onInterstitialShown(@NonNull com.wortise.ads.interstitial.InterstitialAd interstitialAd) {
+
+                            }
+                        });
+                        wortiseInterstitialAd.loadAd();
+                        break;
+
                     case NONE:
                         //do nothing
                         break;
@@ -819,6 +892,14 @@ public class InterstitialAd {
                                 showBackupInterstitialAd();
                             }
                             break;
+
+                        case WORTISE:
+                            if (wortiseInterstitialAd != null && wortiseInterstitialAd.isAvailable()) {
+                                wortiseInterstitialAd.showAd();
+                            } else {
+                                showBackupInterstitialAd();
+                            }
+                            break;
                     }
                     counter = 1;
                 } else {
@@ -905,6 +986,12 @@ public class InterstitialAd {
                     case FAN_BIDDING_IRONSOURCE:
                         if (IronSource.isInterstitialReady()) {
                             IronSource.showInterstitial(ironSourceInterstitialId);
+                        }
+                        break;
+
+                    case WORTISE:
+                        if (wortiseInterstitialAd != null && wortiseInterstitialAd.isAvailable()) {
+                            wortiseInterstitialAd.showAd();
                         }
                         break;
 

@@ -40,6 +40,12 @@ public class Constant {
     public static final String IRONSOURCE_BANNER_ID = "DefaultBanner";
     public static final String IRONSOURCE_INTERSTITIAL_ID = "DefaultInterstitial";
 
+    public static final String WORTISE_APP_ID = "test-app-id";
+    public static final String WORTISE_BANNER_ID = "test-banner";
+    public static final String WORTISE_INTERSTITIAL_ID = "test-interstitial";
+    public static final String WORTISE_NATIVE_ID = "test-native";
+    public static final String WORTISE_APP_OPEN_AD_ID = "test-app-open";
+
     public static String NATIVE_STYLE = "default";
     public static final String STYLE_NEWS = "news";
     public static final String STYLE_RADIO = "radio";

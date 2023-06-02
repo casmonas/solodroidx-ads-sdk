@@ -476,6 +476,7 @@ public class NativeAd {
                                     Log.d(TAG, "StartApp Native Ad failed loaded");
                                 }
                             };
+                            //noinspection deprecation
                             startAppNativeAd.loadAd(nativePrefs, adListener);
                         } else {
                             Log.d(TAG, "StartApp Native Ad has been loaded");
@@ -899,6 +900,7 @@ public class NativeAd {
                                     Log.d(TAG, "StartApp Native Ad failed loaded");
                                 }
                             };
+                            //noinspection deprecation
                             startAppNativeAd.loadAd(nativePrefs, adListener);
                         } else {
                             Log.d(TAG, "StartApp Native Ad has been loaded");

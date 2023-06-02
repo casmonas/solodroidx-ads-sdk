@@ -381,6 +381,7 @@ public class NativeAdViewHolder extends RecyclerView.ViewHolder {
                                     Log.d(TAG, "ad failed");
                                 }
                             };
+                            //noinspection deprecation
                             startAppNativeAd.loadAd(nativePrefs, adListener);
                         } else {
                             Log.d(TAG, "StartApp native ads has been loaded");
@@ -778,6 +779,7 @@ public class NativeAdViewHolder extends RecyclerView.ViewHolder {
                                     Log.d(TAG, "ad failed");
                                 }
                             };
+                            //noinspection deprecation
                             startAppNativeAd.loadAd(nativePrefs, adListener);
                         } else {
                             Log.d(TAG, "StartApp native ads has been loaded");
@@ -1172,6 +1174,7 @@ public class NativeAdViewHolder extends RecyclerView.ViewHolder {
                                     Log.d(TAG, "ad failed");
                                 }
                             };
+                            //noinspection deprecation
                             startAppNativeAd.loadAd(nativePrefs, adListener);
                         } else {
                             Log.d(TAG, "StartApp native ads has been loaded");
@@ -1512,6 +1515,7 @@ public class NativeAdViewHolder extends RecyclerView.ViewHolder {
                                     Log.d(TAG, "ad failed");
                                 }
                             };
+                            //noinspection deprecation
                             startAppNativeAd.loadAd(nativePrefs, adListener);
                         } else {
                             Log.d(TAG, "StartApp native ads has been loaded");
@@ -1850,6 +1854,7 @@ public class NativeAdViewHolder extends RecyclerView.ViewHolder {
                                     Log.d(TAG, "ad failed");
                                 }
                             };
+                            //noinspection deprecation
                             startAppNativeAd.loadAd(nativePrefs, adListener);
                         } else {
                             Log.d(TAG, "StartApp native ads has been loaded");
@@ -2152,6 +2157,7 @@ public class NativeAdViewHolder extends RecyclerView.ViewHolder {
                                     Log.d(TAG, "ad failed");
                                 }
                             };
+                            //noinspection deprecation
                             startAppNativeAd.loadAd(nativePrefs, adListener);
                         } else {
                             Log.d(TAG, "StartApp native ads has been loaded");
@@ -2450,6 +2456,7 @@ public class NativeAdViewHolder extends RecyclerView.ViewHolder {
                                     Log.d(TAG, "ad failed");
                                 }
                             };
+                            //noinspection deprecation
                             startAppNativeAd.loadAd(nativePrefs, adListener);
                         } else {
                             Log.d(TAG, "StartApp native ads has been loaded");
@@ -2742,6 +2749,7 @@ public class NativeAdViewHolder extends RecyclerView.ViewHolder {
                                     Log.d(TAG, "ad failed");
                                 }
                             };
+                            //noinspection deprecation
                             startAppNativeAd.loadAd(nativePrefs, adListener);
                         } else {
                             Log.d(TAG, "StartApp native ads has been loaded");
